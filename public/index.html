@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Drawing Task Manager</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div>
+            <h1>🎨 Drawing Task Manager</h1>
+            <p>จัดการงานวาดรูปและโปรเจกต์การ์ตูน</p>
+        </div>
+
+        <button class="btn btn-primary" id="openAddBtn">
+            + เพิ่มงาน
+        </button>
+    </header>
+
+
+    <main class="container">
+
+        <!-- Dashboard -->
+
+        <section class="dashboard">
+
+            <div class="stat-card">
+                <span>งานทั้งหมด</span>
+                <strong id="totalTasks">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>กำลังทำ</span>
+                <strong id="progressTasks">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>เสร็จแล้ว</span>
+                <strong id="completedTasks">0</strong>
+            </div>
+
+        </section>
+
+
+        <!-- Filter -->
+
+        <section class="toolbar">
+
+            <div>
+                <label for="statusFilter">
+                    สถานะ
+                </label>
+
+                <select id="statusFilter">
+                    <option value="">ทั้งหมด</option>
+                    <option value="todo">ยังไม่เริ่ม</option>
+                    <option value="in-progress">กำลังทำ</option>
+                    <option value="completed">เสร็จแล้ว</option>
+                </select>
+            </div>
+
+        </section>
+
+
+        <!-- Task List -->
+
+        <section>
+
+            <div id="taskList" class="task-grid">
+                <!-- JavaScript จะสร้าง Card ตรงนี้ -->
+            </div>
+
+            <div id="emptyMessage" class="empty-message hidden">
+                ยังไม่มีงานในรายการ
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Modal -->
+
+    <div id="taskModal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2 id="modalTitle">
+                    เพิ่มงานใหม่
+                </h2>
+
+                <button
+                    class="close-btn"
+                    id="closeModalBtn"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="taskForm">
+
+                <input
+                    type="hidden"
+                    id="taskId"
+                >
+
+
+                <div class="form-group">
+
+                    <label for="title">
+                        ชื่องาน *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="เช่น วาดฉากห้องเรียน"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="category">
+                            ประเภท *
+                        </label>
+
+                        <select id="category" required>
+
+                            <option value="">
+                                เลือกประเภท
+                            </option>
+
+                            <option value="Character">
+                                Character
+                            </option>
+
+                            <option value="Background">
+                                Background
+                            </option>
+
+                            <option value="Coloring">
+                                Coloring
+                            </option>
+
+                            <option value="Illustration">
+                                Illustration
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="status">
+                            สถานะ *
+                        </label>
+
+                        <select id="status" required>
+
+                            <option value="todo">
+                                ยังไม่เริ่ม
+                            </option>
+
+                            <option value="in-progress">
+                                กำลังทำ
+                            </option>
+
+                            <option value="completed">
+                                เสร็จแล้ว
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="deadline">
+                        กำหนดส่ง *
+                    </label>
+
+                    <input
+                        type="date"
+                        id="deadline"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="description">
+                        รายละเอียด
+                    </label>
+
+                    <textarea
+                        id="description"
+                        rows="4"
+                        placeholder="รายละเอียดเพิ่มเติม..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        id="cancelBtn"
+                    >
+                        ยกเลิก
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        บันทึก
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div id="toast" class="toast"></div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

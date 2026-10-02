@@ -1,0 +1,28 @@
+let tasks = [
+    {
+        id: 1,
+        title: "วาดฉากห้องเรียน",
+        category: "Background",
+        status: "in-progress",
+        deadline: "2026-10-05",
+        description: "วาดฉากสำหรับตอนที่ 1"
+    },
+    {
+        id: 2,
+        title: "ออกแบบตัวละคร",
+        category: "Character",
+        status: "completed",
+        deadline: "2026-10-03",
+        description: "ออกแบบตัวละครหลัก"
+    },
+    {
+        id: 3,
+        title: "ลงสีหน้าปก",
+        category: "Coloring",
+        status: "todo",
+        deadline: "2026-10-10",
+        description: "ลงสีหน้าปกตอนที่ 1"
+    }
+];
+
+module.exports = tasks;
